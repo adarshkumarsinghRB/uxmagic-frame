@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App Onboarding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link id="heading-font-link" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link id="body-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['var(--font-heading-name)', 'sans-serif'],
+                        body: ['var(--font-body-name)', 'sans-serif'],
+                    },
+                    spacing: {
+                        base: 'var(--space-base)',
+                    },
+                    borderRadius: {
+                        small: 'var(--radius-small)',
+                        large: 'var(--radius-large)',
+                        full: '9999px',
+                    },
+                    boxShadow: {
+                        custom: 'var(--shadow-custom)',
+                        'custom-hover': 'var(--shadow-custom-hover)',
+                    },
+                    colors: {
+                        // Custom mapping for this specific dark theme clone
+                        spotify: {
+                            green: '#1ED760',
+                            black: '#121212',
+                            dark: '#191414',
+                            light: '#FFFFFF',
+                            grey: '#B3B3B3'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            /* Typography */
+            --font-heading-name: 'Montserrat';
+            --font-body-name: 'Inter';
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --letter-spacing-heading: -0.5px;
+            --letter-spacing-body: 0px;
+            
+            /* Spacing */
+            --space-base: 1rem;
+            
+            /* Borders */
+            --radius-small: 4px;
+            --radius-large: 8px;
+            --border-width: 1px;
+            
+            /* Shadows */
+            --shadow-color: 0 0 0;
+            --shadow-offset-x: 0px;
+            --shadow-offset-y: 4px;
+            --shadow-blur: 10px;
+            --shadow-spread: 0px;
+            --shadow-opacity: 0.3;
+            --shadow-custom: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            --shadow-custom-hover: 0px 6px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Custom scrollbar for genre grid */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-body bg-neutral-900 text-neutral-50" style="height: auto; min-height: 100%;">
+
+    <!-- Main Container -->
+    <main class="flex flex-col min-h-screen w-full max-w-md mx-auto relative bg-neutral-900">
+        
+        <!-- Top Navigation Bar -->
+        <header class="sticky top-0 z-20 bg-neutral-900/95 backdrop-blur-sm px-6 pt-6 pb-4 border-b border-neutral-800">
+            <div class="flex items-center justify-between mb-4">
+                <button class="w-8 h-8 flex items-center justify-center rounded-full bg-neutral-800 text-neutral-400 hover:text-white transition-colors">
+                    <!-- Chevron Left Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <span class="text-xs font-bold tracking-widest text-neutral-500 uppercase">Step 1 of 3</span>
+                <button class="text-sm font-bold text-neutral-400 hover:text-white transition-colors">Skip</button>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="w-full h-1 bg-neutral-800 rounded-full overflow-hidden">
+                <div class="h-full w-1/3 bg-[#1ED760] rounded-full"></div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="flex-1 px-6 py-6 pb-32">
+            <!-- Heading -->
+            <div class="mb-8">
+                <h1 class="font-heading text-3xl font-bold text-white mb-2">What do you like?</h1>
+                <p class="text-neutral-400 text-sm">Choose 3 or more genres to help us recommend the best music for you.</p>
+            </div>
+
+            <!-- Genre Grid -->
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Pop Card (Selected State) -->
+                <div class="relative aspect-square rounded-lg overflow-hidden cursor-pointer group ring-4 ring-[#1ED760] transition-all duration-200">
+                    <div class="absolute inset-0 bg-gradient-to-br from-pink-500 to-purple-600 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                    <span class="absolute top-3 left-3 font-heading font-bold text-lg">Pop</span>
+                    <div class="absolute top-3 right-3 bg-[#1ED760] rounded-full p-1 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1514525253440-b393452e3383?auto=format&fit=crop&w=300&q=80" alt="Pop" class="absolute bottom-[-10px] right-[-10px] w-20 h-20 object-cover rounded-lg transform rotate-[25deg] shadow-xl opacity-80 mix-blend-overlay">
+                </div>
+
+                <!-- Hip Hop Card -->
+                <div class="relative aspect-square rounded-lg overflow-hidden cursor-pointer group hover:scale-[1.02] transition-all duration-200">
+                    <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                    <span class="absolute top-3 left-3 font-heading font-bold text-lg">Hip Hop</span>
+                    <img src="https://images.unsplash.com/photo-1571609827552-88849449339b?auto=format&fit=crop&w=300&q=80" alt="Hip Hop" class="absolute bottom-[-10px] right-[-10px] w-20 h-20 object-cover rounded-lg transform rotate-[25deg] shadow-xl opacity-80 mix-blend-overlay">
+                </div>
+
+                <!-- Rock Card (Selected State) -->
+                <div class="relative aspect-square rounded-lg overflow-hidden cursor-pointer group ring-4 ring-[#1ED760] transition-all duration-200">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600 to-red-900 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                    <span class="absolute top-3 left-3 font-heading font-bold text-lg">Rock</span>
+                    <div class="absolute top-3 right-3 bg-[#1ED760] rounded-full p-1 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&w=300&q=80" alt="Rock" class="absolute bottom-[-10px] right-[-10px] w-20 h-20 object-cover rounded-lg transform rotate-[25deg] shadow-xl opacity-80 mix-blend-overlay">
+                </div>
+
+                <!-- Electronic Card -->
+                <div class="relative aspect-square rounded-lg overflow-hidden cursor-pointer group hover:scale-[1.02] transition-all duration-200">
+                    <div class="absolute inset-0 bg-gradient-to-br from-teal-400 to-blue-600 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                    <span class="absolute top-3 left-3 font-heading font-bold text-lg">Electronic</span>
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=300&q=80" alt="Electronic" class="absolute bottom-[-10px] right-[-10px] w-20 h-20 object-cover rounded-lg transform rotate-[25deg] shadow-xl opacity-80 mix-blend-overlay">
+                </div>
+
+                <!-- Indie Card -->
+                <div class="relative aspect-square rounded-lg overflow-hidden cursor-pointer group hover:scale-[1.02] transition-all duration-200">
+                    <div class="absolute inset-0 bg-gradient-to-br from-yellow-400 to-orange-500 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                    <span class="absolute top-3 left-3 font-heading font-bold text-lg">Indie</span>
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=300&q=80" alt="Indie" class="absolute bottom-[-10px] right-[-10px] w-20 h-20 object-cover rounded-lg transform rotate-[25deg] shadow-xl opacity-80 mix-blend-overlay">
+                </div>
+
+                <!-- Jazz Card -->
+                <div class="relative aspect-square rounded-lg overflow-hidden cursor-pointer group hover:scale-[1.02] transition-all duration-200">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-800 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                    <span class="absolute top-3 left-3 font-heading font-bold text-lg">Jazz</span>
+                    <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=300&q=80" alt="Jazz" class="absolute bottom-[-10px] right-[-10px] w-20 h-20 object-cover rounded-lg transform rotate-[25deg] shadow-xl opacity-80 mix-blend-overlay">
+                </div>
+                
+                <!-- Classical Card -->
+                <div class="relative aspect-square rounded-lg overflow-hidden cursor-pointer group hover:scale-[1.02] transition-all duration-200">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-700 to-indigo-900 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                    <span class="absolute top-3 left-3 font-heading font-bold text-lg">Classical</span>
+                    <img src="https://images.unsplash.com/photo-1507838153414-b4b713384ebd?auto=format&fit=crop&w=300&q=80" alt="Classical" class="absolute bottom-[-10px] right-[-10px] w-20 h-20 object-cover rounded-lg transform rotate-[25deg] shadow-xl opacity-80 mix-blend-overlay">
+                </div>
+                
+                <!-- Country Card -->
+                <div class="relative aspect-square rounded-lg overflow-hidden cursor-pointer group hover:scale-[1.02] transition-all duration-200">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-700 to-brown-900 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                    <span class="absolute top-3 left-3 font-heading font-bold text-lg">Country</span>
+                    <img src="https://images.unsplash.com/photo-1525926477800-7a3be5800fcb?auto=format&fit=crop&w=300&q=80" alt="Country" class="absolute bottom-[-10px] right-[-10px] w-20 h-20 object-cover rounded-lg transform rotate-[25deg] shadow-xl opacity-80 mix-blend-overlay">
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Bottom Action Bar -->
+        <div class="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-neutral-900 via-neutral-900 to-transparent z-30 max-w-md mx-auto">
+            <button class="w-full py-4 px-8 bg-[#1ED760] hover:bg-[#1db954] active:scale-[0.98] transition-all duration-200 rounded-full flex items-center justify-center shadow-lg shadow-green-900/20 group">
+                <span class="font-heading font-bold text-neutral-900 text-base tracking-wide mr-2">Next</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-900 group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+        </div>
+
+    </main>
+
+</body>
+</html>
