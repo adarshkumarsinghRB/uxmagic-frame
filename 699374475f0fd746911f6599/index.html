@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App Onboarding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link id="heading-font-link" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link id="body-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['var(--font-heading-name)', 'sans-serif'],
+                        body: ['var(--font-body-name)', 'sans-serif'],
+                    },
+                    spacing: {
+                        base: 'var(--space-base)',
+                    },
+                    borderRadius: {
+                        small: 'var(--radius-small)',
+                        large: 'var(--radius-large)',
+                        full: '9999px',
+                    },
+                    boxShadow: {
+                        custom: 'var(--shadow-custom)',
+                        'custom-hover': 'var(--shadow-custom-hover)',
+                    },
+                    colors: {
+                        spotify: {
+                            green: '#1ED760',
+                            black: '#121212',
+                            dark: '#191414',
+                            light: '#FFFFFF',
+                            grey: '#B3B3B3'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --font-heading-name: 'Montserrat';
+            --font-body-name: 'Inter';
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --letter-spacing-heading: -0.5px;
+            --letter-spacing-body: 0px;
+            --space-base: 1rem;
+            --radius-small: 4px;
+            --radius-large: 8px;
+            --border-width: 1px;
+            --shadow-color: 0 0 0;
+            --shadow-offset-x: 0px;
+            --shadow-offset-y: 4px;
+            --shadow-blur: 10px;
+            --shadow-spread: 0px;
+            --shadow-opacity: 0.3;
+            --shadow-custom: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            --shadow-custom-hover: 0px 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .onboarding-slide {
+            display: none;
+        }
+        .onboarding-slide.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body class="font-body bg-neutral-900 text-neutral-50" style="height: auto; min-height: 100%;">
+
+    <main class="flex flex-col h-screen w-full max-w-md mx-auto relative">
+        
+        <!-- Slide 1: Discover Music -->
+        <section id="slide-1" class="onboarding-slide active flex-col h-full px-8 py-12 justify-between max-h-screen">
+            <!-- Skip Button -->
+            <div class="flex justify-end">
+                <button onclick="goToSlide(4)" class="text-neutral-400 hover:text-neutral-50 font-body font-semibold text-sm transition-colors">
+                    Skip
+                </button>
+            </div>
+
+            <!-- Image Area -->
+            <div class="flex-1 flex items-center justify-center py-8">
+                <div class="w-full max-w-xs">
+                    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=600&fit=crop" alt="Music Discovery" class="w-full h-auto rounded-large">
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="text-center mb-8">
+                <h2 class="font-heading text-3xl font-bold mb-4 text-neutral-50">
+                    Discover millions of songs
+                </h2>
+                <p class="font-body text-neutral-400 text-base leading-relaxed">
+                    Explore a vast library of music from artists around the world. Find your next favorite track.
+                </p>
+            </div>
+
+            <!-- Progress Dots -->
+            <div class="flex justify-center gap-2 mb-6">
+                <span class="w-8 h-1 bg-[#1ED760] rounded-full"></span>
+                <span class="w-8 h-1 bg-neutral-700 rounded-full"></span>
+                <span class="w-8 h-1 bg-neutral-700 rounded-full"></span>
+            </div>
+
+            <!-- Next Button -->
+            <button onclick="goToSlide(2)" class="w-full py-4 px-8 bg-[#1ED760] hover:bg-[#1db954] active:scale-[0.98] transition-all duration-200 rounded-full">
+                <span class="font-heading font-bold text-neutral-900 text-base tracking-wide">Next</span>
+            </button>
+        </section>
+
+        <!-- Slide 2: Create Playlists -->
+        <section id="slide-2" class="onboarding-slide flex-col h-full px-8 py-12 justify-between max-h-screen">
+            <!-- Skip Button -->
+            <div class="flex justify-end">
+                <button onclick="goToSlide(4)" class="text-neutral-400 hover:text-neutral-50 font-body font-semibold text-sm transition-colors">
+                    Skip
+                </button>
+            </div>
+
+            <!-- Image Area -->
+            <div class="flex-1 flex items-center justify-center py-8">
+                <div class="w-full max-w-xs">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=600&fit=crop" alt="Create Playlists" class="w-full h-auto rounded-large">
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="text-center mb-8">
+                <h2 class="font-heading text-3xl font-bold mb-4 text-neutral-50">
+                    Create your playlists
+                </h2>
+                <p class="font-body text-neutral-400 text-base leading-relaxed">
+                    Build the perfect soundtrack for every moment. Organize your favorite songs into custom playlists.
+                </p>
+            </div>
+
+            <!-- Progress Dots -->
+            <div class="flex justify-center gap-2 mb-6">
+                <span class="w-8 h-1 bg-neutral-700 rounded-full"></span>
+                <span class="w-8 h-1 bg-[#1ED760] rounded-full"></span>
+                <span class="w-8 h-1 bg-neutral-700 rounded-full"></span>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex gap-4">
+                <button onclick="goToSlide(1)" class="flex-1 py-4 px-8 bg-transparent border border-neutral-400 hover:border-neutral-50 active:scale-[0.98] transition-all duration-200 rounded-full">
+                    <span class="font-heading font-bold text-neutral-50 text-base tracking-wide">Back</span>
+                </button>
+                <button onclick="goToSlide(3)" class="flex-1 py-4 px-8 bg-[#1ED760] hover:bg-[#1db954] active:scale-[0.98] transition-all duration-200 rounded-full">
+                    <span class="font-heading font-bold text-neutral-900 text-base tracking-wide">Next</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Slide 3: Listen Anywhere -->
+        <section id="slide-3" class="onboarding-slide flex-col h-full px-8 py-12 justify-between max-h-screen">
+            <!-- Skip Button -->
+            <div class="flex justify-end">
+                <button onclick="goToSlide(4)" class="text-neutral-400 hover:text-neutral-50 font-body font-semibold text-sm transition-colors">
+                    Skip
+                </button>
+            </div>
+
+            <!-- Image Area -->
+            <div class="flex-1 flex items-center justify-center py-8">
+                <div class="w-full max-w-xs">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=600&fit=crop" alt="Listen Anywhere" class="w-full h-auto rounded-large">
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="text-center mb-8">
+                <h2 class="font-heading text-3xl font-bold mb-4 text-neutral-50">
+                    Listen anywhere
+                </h2>
+                <p class="font-body text-neutral-400 text-base leading-relaxed">
+                    Take your music with you. Stream on any device, download for offline listening, and enjoy on the go.
+                </p>
+            </div>
+
+            <!-- Progress Dots -->
+            <div class="flex justify-center gap-2 mb-6">
+                <span class="w-8 h-1 bg-neutral-700 rounded-full"></span>
+                <span class="w-8 h-1 bg-neutral-700 rounded-full"></span>
+                <span class="w-8 h-1 bg-[#1ED760] rounded-full"></span>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex gap-4">
+                <button onclick="goToSlide(2)" class="flex-1 py-4 px-8 bg-transparent border border-neutral-400 hover:border-neutral-50 active:scale-[0.98] transition-all duration-200 rounded-full">
+                    <span class="font-heading font-bold text-neutral-50 text-base tracking-wide">Back</span>
+                </button>
+                <button onclick="goToSlide(4)" class="flex-1 py-4 px-8 bg-[#1ED760] hover:bg-[#1db954] active:scale-[0.98] transition-all duration-200 rounded-full">
+                    <span class="font-heading font-bold text-neutral-900 text-base tracking-wide">Get Started</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Slide 4: Get Started -->
+        <section id="slide-4" class="onboarding-slide flex-col h-full px-8 py-12 justify-between max-h-screen">
+            <!-- Background Gradient -->
+            <div class="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-neutral-800/20 to-transparent pointer-events-none"></div>
+
+            <!-- Content -->
+            <div class="flex-1 flex flex-col justify-center items-center text-center z-10 mb-12">
+                <!-- Logo -->
+                <div class="w-20 h-20 mb-8 bg-neutral-50 rounded-full flex items-center justify-center p-1">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify Logo" class="w-full h-full object-contain">
+                </div>
+
+                <!-- Heading -->
+                <h1 class="font-heading text-4xl font-bold leading-tight tracking-tight text-neutral-50 mb-4">
+                    Ready to start<br>
+                    your journey?
+                </h1>
+                <p class="font-body text-neutral-400 text-base leading-relaxed max-w-sm">
+                    Join millions of music lovers and discover your soundtrack today.
+                </p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="w-full space-y-4 z-10">
+                <button class="w-full py-4 px-8 bg-[#1ED760] hover:bg-[#1db954] active:scale-[0.98] transition-all duration-200 rounded-full">
+                    <span class="font-heading font-bold text-neutral-900 text-base tracking-wide">Sign up for free</span>
+                </button>
+                <button class="w-full py-4 px-8 bg-transparent border border-neutral-400 hover:border-neutral-50 active:scale-[0.98] transition-all duration-200 rounded-full">
+                    <span class="font-heading font-bold text-neutral-50 text-base tracking-wide">Log in</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function goToSlide(slideNumber) {
+            // Hide all slides
+            document.querySelectorAll('.onboarding-slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Show target slide
+            document.getElementById('slide-' + slideNumber).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
