@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genre Selection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link id="heading-font-link" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link id="body-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['var(--font-heading-name)', 'sans-serif'],
+                        body: ['var(--font-body-name)', 'sans-serif'],
+                    },
+                    spacing: {
+                        base: 'var(--space-base)',
+                    },
+                    borderRadius: {
+                        small: 'var(--radius-small)',
+                        large: 'var(--radius-large)',
+                        full: '9999px',
+                    },
+                    boxShadow: {
+                        custom: 'var(--shadow-custom)',
+                        'custom-hover': 'var(--shadow-custom-hover)',
+                    },
+                    colors: {
+                        // Custom mapping for this specific dark theme clone
+                        spotify: {
+                            green: '#1ED760',
+                            black: '#121212',
+                            dark: '#191414',
+                            light: '#FFFFFF',
+                            grey: '#B3B3B3'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            /* Typography */
+            --font-heading-name: 'Montserrat';
+            --font-body-name: 'Inter';
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --letter-spacing-heading: -0.5px;
+            --letter-spacing-body: 0px;
+            
+            /* Spacing */
+            --space-base: 1rem;
+            
+            /* Borders */
+            --radius-small: 4px;
+            --radius-large: 8px;
+            --border-width: 1px;
+            
+            /* Shadows */
+            --shadow-color: 0 0 0;
+            --shadow-offset-x: 0px;
+            --shadow-offset-y: 4px;
+            --shadow-blur: 10px;
+            --shadow-spread: 0px;
+            --shadow-opacity: 0.3;
+            --shadow-custom: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            --shadow-custom-hover: 0px 6px 15px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="font-body bg-neutral-900 text-neutral-50" style="height: auto; min-height: 100%;">
+
+    <!-- Main Container -->
+    <main class="flex flex-col w-full max-w-md mx-auto relative px-6 pb-8 pt-8">
+        
+        <!-- Background Gradient Effect -->
+        <div class="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-purple-900/15 via-pink-900/10 to-transparent pointer-events-none"></div>
+
+        <!-- Header Section -->
+        <div class="relative z-10 mb-8">
+            <!-- Back Button -->
+            <button class="mb-6 flex items-center text-neutral-400 hover:text-neutral-50 transition-colors duration-200">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                </svg>
+                <span class="font-body text-sm font-medium">Back</span>
+            </button>
+
+            <!-- Title & Subtitle -->
+            <div class="mb-2">
+                <h1 class="font-heading text-3xl font-bold text-neutral-50 mb-2 tracking-tight">
+                    Choose your genres
+                </h1>
+                <p class="font-body text-base text-neutral-400 leading-relaxed">
+                    Select 3 or more genres to personalize your music experience
+                </p>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="flex items-center gap-2 mt-6">
+                <div class="h-1 flex-1 bg-[#1ED760] rounded-full"></div>
+                <div class="h-1 flex-1 bg-[#1ED760] rounded-full"></div>
+                <div class="h-1 flex-1 bg-neutral-700 rounded-full"></div>
+                <div class="h-1 flex-1 bg-neutral-700 rounded-full"></div>
+            </div>
+        </div>
+
+        <!-- Genre Grid -->
+        <div class="relative z-10 flex-1 mb-6 max-h-[600px] overflow-y-auto">
+            <div class="grid grid-cols-2 gap-3 pb-4">
+                
+                <!-- Genre Card: Pop -->
+                <button class="group relative overflow-hidden rounded-large aspect-square bg-gradient-to-br from-pink-500 to-purple-600 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-custom hover:shadow-custom-hover">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-200"></div>
+                    <div class="relative h-full flex flex-col justify-end p-4">
+                        <h3 class="font-heading text-xl font-bold text-neutral-50 tracking-tight">Pop</h3>
+                    </div>
+                    <!-- Selection Indicator -->
+                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full border-2 border-neutral-50 bg-transparent group-hover:bg-[#1ED760] group-hover:border-[#1ED760] transition-all duration-200 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </button>
+
+                <!-- Genre Card: Rock -->
+                <button class="group relative overflow-hidden rounded-large aspect-square bg-gradient-to-br from-red-600 to-orange-500 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-custom hover:shadow-custom-hover">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-200"></div>
+                    <div class="relative h-full flex flex-col justify-end p-4">
+                        <h3 class="font-heading text-xl font-bold text-neutral-50 tracking-tight">Rock</h3>
+                    </div>
+                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full border-2 border-neutral-50 bg-transparent group-hover:bg-[#1ED760] group-hover:border-[#1ED760] transition-all duration-200 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </button>
+
+                <!-- Genre Card: Hip Hop -->
+                <button class="group relative overflow-hidden rounded-large aspect-square bg-gradient-to-br from-yellow-500 to-amber-600 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-custom hover:shadow-custom-hover">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-200"></div>
+                    <div class="relative h-full flex flex-col justify-end p-4">
+                        <h3 class="font-heading text-xl font-bold text-neutral-50 tracking-tight">Hip Hop</h3>
+                    </div>
+                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full border-2 border-neutral-50 bg-transparent group-hover:bg-[#1ED760] group-hover:border-[#1ED760] transition-all duration-200 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </button>
+
+                <!-- Genre Card: Electronic -->
+                <button class="group relative overflow-hidden rounded-large aspect-square bg-gradient-to-br from-cyan-500 to-blue-600 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-custom hover:shadow-custom-hover">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-200"></div>
+                    <div class="relative h-full flex flex-col justify-end p-4">
+                        <h3 class="font-heading text-xl font-bold text-neutral-50 tracking-tight">Electronic</h3>
+                    </div>
+                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full border-2 border-neutral-50 bg-transparent group-hover:bg-[#1ED760] group-hover:border-[#1ED760] transition-all duration-200 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </button>
+
+                <!-- Genre Card: Jazz -->
+                <button class="group relative overflow-hidden rounded-large aspect-square bg-gradient-to-br from-indigo-600 to-purple-700 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-custom hover:shadow-custom-hover">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-200"></div>
+                    <div class="relative h-full flex flex-col justify-end p-4">
+                        <h3 class="font-heading text-xl font-bold text-neutral-50 tracking-tight">Jazz</h3>
+                    </div>
+                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full border-2 border-neutral-50 bg-transparent group-hover:bg-[#1ED760] group-hover:border-[#1ED760] transition-all duration-200 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </button>
+
+                <!-- Genre Card: Classical -->
+                <button class="group relative overflow-hidden rounded-large aspect-square bg-gradient-to-br from-emerald-600 to-teal-700 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-custom hover:shadow-custom-hover">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-200"></div>
+                    <div class="relative h-full flex flex-col justify-end p-4">
+                        <h3 class="font-heading text-xl font-bold text-neutral-50 tracking-tight">Classical</h3>
+                    </div>
+                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full border-2 border-neutral-50 bg-transparent group-hover:bg-[#1ED760] group-hover:border-[#1ED760] transition-all duration-200 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </button>
+
+                <!-- Genre Card: Country -->
+                <button class="group relative overflow-hidden rounded-large aspect-square bg-gradient-to-br from-amber-600 to-yellow-700 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-custom hover:shadow-custom-hover">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-200"></div>
+                    <div class="relative h-full flex flex-col justify-end p-4">
+                        <h3 class="font-heading text-xl font-bold text-neutral-50 tracking-tight">Country</h3>
+                    </div>
+                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full border-2 border-neutral-50 bg-transparent group-hover:bg-[#1ED760] group-hover:border-[#1ED760] transition-all duration-200 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </button>
+
+                <!-- Genre Card: R&B -->
+                <button class="group relative overflow-hidden rounded-large aspect-square bg-gradient-to-br from-rose-600 to-pink-700 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-custom hover:shadow-custom-hover">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-200"></div>
+                    <div class="relative h-full flex flex-col justify-end p-4">
+                        <h3 class="font-heading text-xl font-bold text-neutral-50 tracking-tight">R&B</h3>
+                    </div>
+                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full border-2 border-neutral-50 bg-transparent group-hover:bg-[#1ED760] group-hover:border-[#1ED760] transition-all duration-200 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </button>
+
+                <!-- Genre Card: Latin -->
+                <button class="group relative overflow-hidden rounded-large aspect-square bg-gradient-to-br from-orange-600 to-red-700 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-custom hover:shadow-custom-hover">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-200"></div>
+                    <div class="relative h-full flex flex-col justify-end p-4">
+                        <h3 class="font-heading text-xl font-bold text-neutral-50 tracking-tight">Latin</h3>
+                    </div>
+                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full border-2 border-neutral-50 bg-transparent group-hover:bg-[#1ED760] group-hover:border-[#1ED760] transition-all duration-200 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </button>
+
+                <!-- Genre Card: Indie -->
+                <button class="group relative overflow-hidden rounded-large aspect-square bg-gradient-to-br from-lime-600 to-green-700 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-custom hover:shadow-custom-hover">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-200"></div>
+                    <div class="relative h-full flex flex-col justify-end p-4">
+                        <h3 class="font-heading text-xl font-bold text-neutral-50 tracking-tight">Indie</h3>
+                    </div>
+                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full border-2 border-neutral-50 bg-transparent group-hover:bg-[#1ED760] group-hover:border-[#1ED760] transition-all duration-200 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </button>
+
+                <!-- Genre Card: Metal -->
+                <button class="group relative overflow-hidden rounded-large aspect-square bg-gradient-to-br from-gray-700 to-neutral-900 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-custom hover:shadow-custom-hover">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-200"></div>
+                    <div class="relative h-full flex flex-col justify-end p-4">
+                        <h3 class="font-heading text-xl font-bold text-neutral-50 tracking-tight">Metal</h3>
+                    </div>
+                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full border-2 border-neutral-50 bg-transparent group-hover:bg-[#1ED760] group-hover:border-[#1ED760] transition-all duration-200 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </button>
+
+                <!-- Genre Card: Reggae -->
+                <button class="group relative overflow-hidden rounded-large aspect-square bg-gradient-to-br from-green-600 to-emerald-700 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-custom hover:shadow-custom-hover">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-200"></div>
+                    <div class="relative h-full flex flex-col justify-end p-4">
+                        <h3 class="font-heading text-xl font-bold text-neutral-50 tracking-tight">Reggae</h3>
+                    </div>
+                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full border-2 border-neutral-50 bg-transparent group-hover:bg-[#1ED760] group-hover:border-[#1ED760] transition-all duration-200 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Continue Button (Fixed at Bottom) -->
+        <div class="relative z-10 w-full">
+            <button class="w-full py-5 px-8 bg-[#1ED760] hover:bg-[#1db954] active:scale-[0.98] transition-all duration-200 rounded-full flex items-center justify-center shadow-custom group">
+                <span class="font-heading font-bold text-neutral-900 text-lg tracking-wide">Continue</span>
+                <svg class="w-6 h-6 ml-2 text-neutral-900 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+            </button>
+            
+            <p class="text-center text-sm text-neutral-500 mt-4">
+                Select at least 3 genres to continue
+            </p>
+        </div>
+
+    </main>
+
+</body>
+</html>
